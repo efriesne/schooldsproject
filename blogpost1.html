@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Blog Post #1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+        <h1 class="project-name">Data Collection and First Check-In</h1>
+        <h2 class="project-tagline">Blog Post #1</h2>
+    </section>
+	
+	<section class="main-content">
+		<a href="index.html">Return to Home Page</a>
+		<br>
+		<h2>Vision</h2>
+			<p>
+	Our overarching goal is to create a means for visualizing public schools across the country and allowing the user to 	filter along a number of parameters. We’re also hoping to include a temporal component, whereby the user can select any of the years from 2000-2016 and see how schools have changed over time, which schools closed and/or underperformed. This feature could interface with information about the passage of important education legislation throughout the years. We hope to help users understand what attributes are correlated with school success. 
+			</p>
+		<h2>Data</h2>
+			<p>
+	Our project uses data on public schools from the National Center for Education Statistics (NCES) to create a data pipeline for analyzing and comparing schools across the country. We have school-level enrollment, staffing and retention, school performance, and demographic data. To organize this data, we have developed a star schema with a SCHOOL FACT TABLE that combines School name and primary key with State Name and primary key. 
+			</p>
+		<h2>Challenges So Far</h2>
+			<p>
+		So far we haven't had too many issues. One source of frustration has been the relative difficulty we've had with the NCES data repository. You aren't allowed to pull more than 75 columns at a time, which means that we have to pull our data in batches and then append the CSV files.
+			</p>
+		
+		<h2>Next Steps</h2>
+			<p>
+			We hope to work on two things in the coming weeks. First, we'd like to find a way to incorporate major policy changes into our schema such that we can analyze any potential correlation between policy change and school characteristics/performance. We also need to determine what trends to analyze (e.g. performance by state, comparison between public and public charter) to start to get a sense of what the data are telling us and how to disaggregate the data. 
+
+			</p>
+	</section>
+  </body>
+</html>
