@@ -1,0 +1,2 @@
+-- count of schools in each year for which that year they achieved the max success --
+select year, COUNT(year) from (select school_id, year, MAX(success_raw) from success group by school_id order by year) group by year;
