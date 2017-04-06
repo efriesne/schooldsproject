@@ -2,7 +2,7 @@
 
 /////// README
 // call plotConfusionMatrix as shown below
-// true positives are bolded, change startColor and endColor to change color gradient
+// true positives are underlined, change startColor and endColor to change color gradient
 //////
 
 
@@ -57,7 +57,7 @@ ratioMatrix =
 
 
 
-incidentLabels = [4,5,6,7,8,9,10]
+incidentLabels = ["3-4","4-5","5-6","6-7","7-8","8-9","9-10"]
 plotConfusionMatrix(incidentMatrix, 0, 554, incidentLabels);
 
 
