@@ -56,19 +56,11 @@
     </section>
     
     <section class="main-content">
-        <a href="index.html">Return to Home Page</a>
-        <br>
-        <h2>Data</h2>
-            <p>
-   
-            </p>
-        <h2>Visualization</h2>
-            <p>
-                <p id="chart"></p>
-                <script type="text/javascript" src="vis/blogpost2.js"></script>
-            </p>
+        <a href="index.html">Return to Home Page</a></br>
+
 
         <h2>Machine Learning</h2>
+            For our second blog post, we decided to use machine learning to analyze and form predictions about school data.
             <p>
                 <strong> We want to answer two questions with our predictions: </strong> <br>
                 <ol>
@@ -88,6 +80,7 @@
      (Number of students who took the maths test)</center>
 
      <center> <i> All * 1.25 to scale it up to a max score of 10 </i> </center> <br>
+<div style="padding-left:1em">
 If we want to convert this back to a letter grade, we can take our minimum of 2.5 ((1+1)*1.25) and our maximum of 10, and segment these into four even portions, each corresponding to a letter grade. This means that school scores will be the following: <br>
 <ul>
 <li>W/F -- up to 4.375</li>
@@ -124,7 +117,7 @@ For example, if a school has 100 students, presume they score as follows:
     <td>18</td> 
     <td>22</td>
   </tr>
-</table>
+</table><br>
 
 Then the equation would be: <br> <br>
 
@@ -149,16 +142,102 @@ By summing these together, we get 2.84 + 2.67 = 5.51/8. When we scale this to 10
 
 If we convert this back to a letter grade, a 6.8875 would put this school in the Proficient category. This makes sense with our initial data, because the majority of students scored a Proficient in both tests.<br> <br>
 </div>
+</div>
 
-<b> Predicting test scores on other data: Does teacher data predict success?
-</b> <br> <br>
-    We chose to use teacher data across all years from 2006-2014. Expected random accuracy would be 1/7, ~14%
+<b> Predicting test scores on other data: does teacher data predict success?
+</b><br> <br>
 
+<div style="padding-left:1em">
+    We chose to use teacher data across all years from 2006-2014. Expected random accuracy would be 1/7, ~14%. <br> <br>
 
-            </p>
+    For the confusion matrices, each of the columns/rows represents a one-point increase in school success metric.
+    They correspond to [[3-4], [4-5], [5-6], [6-7],[7-8],[8-9],[9-10]].
+    <ul>
+    <li> Rows: the actual scores </li>
+    <li> Columns: the predicted scores </li>
+</ul>
+
+    <b>Student to teacher ratio:</b>
+    <div style="padding-left:1em">
+    training mean accuracy: 0.338100686499<br>
+    mean and std dev for cross validation scores: 0.333903487788 | 0.00573775494621<br>
+    [7 7 7 ..., 5 5 5]<br>
+    predicted mean accuracy: 0.323208722741<br>
+    sklearn confusion matrix: <br>
+    [[  0   0   0   0   0   1   0   0] <br>
+    [   0   0   0   2   0   2   0   0]<br>
+    [   0   0   0   4   2  46   0   0]<br>
+    [   0   0   0   0   0 164   0   0]<br>
+    [   0   0   0   3   1 332   0   0]<br>
+    [   0   0   0   0   1 414   0   0]<br>
+    [   0   0   0   0   1 260   0   0]<br>
+    [   0   0   0   0   0  51   0   0]]<br>
+
+</div> <br>
+
+<b>Percent licensed teachers:</b>
+    <div style="padding-left:1em">
+    training mean accuracy: 0.334858886346<br>
+mean and std dev for cross validation scores: 0.333713676178 | 0.00304841995831<br>
+[7 7 7 ..., 7 7 7]<br>
+predicted mean accuracy: 0.323208722741<br>
+sklearn confusion matrix: <br>
+[[  0   0   0   0   0   1   0   0]<br>
+ [  0   0   0   0   0   4   0   0]<br>
+ [  0   0   0   0   0  52   0   0]<br>
+ [  0   0   0   0   0 164   0   0]<br>
+ [  0   0   0   0   0 336   0   0]<br>
+ [  0   0   0   0   0 415   0   0]<br>
+ [  0   0   0   0   0 261   0   0]<br>
+ [  0   0   0   0   0  51   0   0]]<br>
+
+</div><br>
+
+<b>Percent highly qualified teachers: </b>
+<div style="padding-left:1em">
+    training mean accuracy: 0.3348588<br>
+training mean accuracy: 0.347254004577<br>
+mean and std dev for cross validation scores: 0.339620310794 | 0.00764765378837<br>
+[5 7 7 ..., 7 7 5]<br>
+predicted mean accuracy: 0.328660436137<br>
+sklearn confusion matrix: <br>
+[[  0   0   0   0   1   0   0   0]<br>
+ [  0   0   0   2   0   2   0   0]<br>
+ [  0   0   2  10   2  38   0   0]<br>
+ [  0   0   0  19   8 137   0   0]<br>
+ [  0   0   5  13   9 309   0   0]<br>
+ [  0   0   1  15   7 392   0   0]<br>
+ [  0   0   1   1   2 257   0   0]<br>
+ [  0   0   0   1   0  50   0   0]]<br>
+</div><br>
+
+<b>And all together!</b>
+<div style="padding-left:1em">
+training mean accuracy: 0.374523264683<br>
+mean and std dev for cross validation scores: 0.343075456148 | 0.0119581990978 <br>
+predicted mean accuracy: 0.342679127726<br>
+sklearn confusion matrix: <br>
+[[  0   0   0   1   0   0   0   0]<br>
+ [  0   0   0   2   1   1   0   0]<br>
+ [  0   0   2   9  15  26   0   0]<br>
+ [  0   0   0  15  34 115   0   0]<br>
+ [  0   1   0  11  53 271   0   0]<br>
+ [  0   0   0  13  31 369   2   0]<br>
+ [  0   0   1   1  15 243   1   0]<br>
+ [  0   0   0   0   0  51   0   0]]<br>
+</div> <br>
+
+This means that our ML algorithm works better (in this case by 2%) with more datapoints.
+
+    <p id="chart"></p>
+        <script type="text/javascript" src="vis/blogpost2.js"></script>
+    </p>
+
+</div>
         <h2>Challenges So Far</h2>
             <p>
-        
+            One key problem with our data: the majority of schools rank in the 7-8 range, so just by guessing that score, the algorithm can score well. 
+
             </p>
         
         <h2>Next Steps</h2>
