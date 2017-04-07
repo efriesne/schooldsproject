@@ -3,8 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-        <title>final project blog post II </title>
+        <title>Blog Post #2 </title>
         <style type="text/css">
+
+        /*table source: w3schools*/
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 40%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
         #chart {
             margin-left: 40px;
             height: 506px;
@@ -25,10 +43,129 @@
 
         
         </style>
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     </head>
     <body>
-        <p id="chart"></p>
-        <script type="text/javascript" src="vis/blogpost2.js"></script>
+         <section class="page-header">
+        <h1 class="project-name">Data Collection and First Check-In</h1>
+        <h2 class="project-tagline">Blog Post #2</h2>
+    </section>
+    
+    <section class="main-content">
+        <a href="index.html">Return to Home Page</a>
+        <br>
+        <h2>Data</h2>
+            <p>
+   
+            </p>
+        <h2>Visualization</h2>
+            <p>
+                <p id="chart"></p>
+                <script type="text/javascript" src="vis/blogpost2.js"></script>
+            </p>
+
+        <h2>Machine Learning</h2>
+            <p>
+                <strong> We want to answer two questions with our predictions: </strong> <br>
+                <ol>
+                <li> How well can we predict test scores year to year? E.g. given previous year’s scores, how well can we predict next year’s scores </li>
+                <li> How well can we predict test scores based on other data?</li>
+                </ol>
+                <strong> There are four possible grades for schools: </strong>
+                <ul>
+                <li> W/F -- Warning (Grades 3-8), Failing(High School) </li>
+                <li> NI -- Needs Improvement </li>
+                <li> P -- Proficient </li>
+                <li> A -- Advanced </li>
+            </ul>
+                <br> <br>
+               <strong> Basic success metric: <br> <br> </strong>
+                <center> (sum of english score by each student that year) &frasl; (number of students who took the english test ) <br> + <br>(sum of math score by each student that year) &frasl;
+     (Number of students who took the maths test)</center>
+
+     <center> <i> All * 1.25 to scale it up to a max score of 10 </i> </center> <br>
+If we want to convert this back to a letter grade, we can take our minimum of 2.5 ((1+1)*1.25) and our maximum of 10, and segment these into four even portions, each corresponding to a letter grade. This means that school scores will be the following: <br>
+<ul>
+<li>W/F -- up to 4.375</li>
+<li>NI -- up to 6.25</li>
+<li>P -- up to 8.125</li>
+<li>A -- up to 10</li>
+</ul>
+
+For example, if a school has 100 students, presume they score as follows:
+
+<table>
+  <tr>
+    <th>Score</th>
+    <th>ELA</th> 
+    <th>Math</th>
+  </tr>
+  <tr>
+    <td>W/F</td>
+    <td>12</td> 
+    <td>11</td>
+  </tr>
+  <tr>
+    <td>NI</td>
+    <td>27</td> 
+    <td>16</td>
+  </tr>
+    <tr>
+    <td>P</td>
+    <td>43</td> 
+    <td>51</td>
+  </tr>
+    <tr>
+    <td>A</td>
+    <td>18</td> 
+    <td>22</td>
+  </tr>
+</table>
+
+Then the equation would be: <br> <br>
+
+<div style="padding-left:1em">
+ELA Score: <br>
+
+<div style="padding-left:2em">
+((12*1)+(27*2)+(43*3)+(18*4))/100 = (12+54+129+72)/100 = 267/100 = 2.67<br>
+</div> <br>
+
+<div style="padding-left:-2em">
+So, the school’s success metric on the ELA exam would be 2.67/4<br>
+</div> <br>
+
+Maths Score:<br>
+<div style="padding-left:2em">
+((11*1)+(16*2)+(51*3)+(22*4))/100 = (11+32+153+88)/100 = 2.84<br>
+</div> <br>
+So, the school’s success metric on the Maths exam would be 2.84/4<br>
+
+By summing these together, we get 2.84 + 2.67 = 5.51/8. When we scale this to 10, this means this school got a total success metric of 6.8875 out of 10.<br>
+
+If we convert this back to a letter grade, a 6.8875 would put this school in the Proficient category. This makes sense with our initial data, because the majority of students scored a Proficient in both tests.<br> <br>
+</div>
+
+<b> Predicting test scores on other data: Does teacher data predict success?
+</b> <br> <br>
+    We chose to use teacher data across all years from 2006-2014. Expected random accuracy would be 1/7, ~14%
+
+
+            </p>
+        <h2>Challenges So Far</h2>
+            <p>
+        
+            </p>
+        
+        <h2>Next Steps</h2>
+            <p>
+
+            </p>
+    </section>
 
         
     </body>
