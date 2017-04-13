@@ -26,6 +26,20 @@
         <p> 
         </p>
         <div>
+        <h1> Explanation of Visualization</h1>
+        <p> 
+            Run <b>python3 -m http.server 8888 &amp;</b> from the schooldsproject directory to see the visualization. Each point represents a school in Massachusetts. The blue dots are public schools and the orange are charter schools. They're arranged by
+            latitude and longitude. To create the scale, we got a rough estimate of the max/min longitudes and latitudes of Massachusetts. Then we created
+            a linear scale to convert them to fit on the width of the #chart element. Mousing over a dot reveals the name of the school it represents. This data is only from the year 2013, but we hope to do something similar to Health and Wealth of Nations to display all years and allow the user to change between years. <br> <br>Other features we plan on adding:
+
+            <ul>
+            <li> a zoom function, because some areas, such as Boston, have a lot of schools and it is hard to distinguish them because they're all piled on top of each other. </li>
+
+            <li> a radius proportional to school population </li>
+
+            <li> on mouseover to display more stats about the school/highlight schools that are similar based on certain characteristics. </li>
+            </ul>
+        </p>
         <h1> Data Cleaning Difficulties </h1>
         <p>Because we changed the scope of our project pretty significantly when at our midterm report, we have since run into a couple             difficulties, specifically with cleaning, that are explained below: </p>
             <ul>

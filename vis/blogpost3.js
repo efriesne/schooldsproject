@@ -28,7 +28,6 @@ d3.json("../data/basic_chars_cleaned.json", function(data) {
     return d.year == 2013;
   })
 
-  console.log(d3.schemeCategory10[colorScale(data[0].charter)])
 
   var svg = d3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)
