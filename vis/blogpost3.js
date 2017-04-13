@@ -14,7 +14,7 @@ var height = 500 - margin.top - margin.bottom;
 
 var xScale = d3.scaleLinear().domain([-73514, -69988]).range([0, width]),
     yScale = d3.scaleLinear().domain([41244, 42871]).range([height, 0]),
-    colorScale = d3.scaleOrdinal(["Yes", "No"]);
+    colorScale = d3.scaleOrdinal([0,1]);
 
 // The x & y axes
 var xAxis = d3.axisBottom(xScale),
@@ -58,11 +58,7 @@ d3.json("../data/basic_chars_cleaned.json", function(data) {
     return d.year == 2013;
   })
 
-  console.log(data[0]);
-  console.log(data[0].long*1000)
-  console.log(xScale(data[0].long*1000));
-  console.log(data[0].lat*1000)
-  console.log(yScale(data[0].lat*1000));
+  console.log(d3.schemeCategory10[colorScale(data[0].charter)])
 
   /////////////////////////////////////////
   // Functions provided for your utility //
@@ -84,8 +80,7 @@ d3.json("../data/basic_chars_cleaned.json", function(data) {
       .attr("class", "dot")
       .call(position)
       .attr("fill", function(d) {
-        return "#000";
-        //return d3.schemeCategory10[colorScale(d.region)];
+        return d3.schemeCategory10[colorScale(d.charter)];
       })
 
   ///////////////////////////////////
