@@ -25,5 +25,14 @@
         <script type="text/javascript" src="vis/blogpost3.js"></script>
         <p> 
         </p>
+        <div>
+        <h1> Data Cleaning Difficulties </h1>
+        <p>Because we changed the scope of our project pretty significantly when at our midterm report, we have since run into a couple             difficulties, specifically with cleaning, that are explained below: </p>
+            <ul>
+                <li>Data sets from multiple sources have posed one of the more difficult issues. While most of our data come from the massachusetts data repositories, we got information about the type of school (charter or not) grade span of schools (elementary, middle, high) and latitude and longitude from a national data repository.</li>
+                <li>Integrating the data from these two sources has proven to be incredibly difficult. The ids that are assigned to each school don't match, and the strings for the names of the schools are also not guaranteed to be the same. Thus matching schools across data sets is going to be one of our biggest challenges going forward. We plan on using jaccard similarities to resolve difference in school names, and to take the school ids from the state level, since they are guaranteed to be unique</li>
+                <li>Furthermore, even within the datasets there are problems. From year to year, school names aren't guaranteed to be the same, which is something we're working on resolving also using jaccard similarities. Moreover, the id system the state uses changed in 2006 (our data span from 2002-2014) and so we had to find a consistent system of ids to use.</li>
+            </ul>
+        </div>
     </body>
 </html>
