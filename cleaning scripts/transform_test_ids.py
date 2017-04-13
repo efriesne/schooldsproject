@@ -2,8 +2,8 @@ import re
 import csv
 import math
 
-cleaned = [['district_id', 'district', 'school_id', 'school', 'year', 'grade', 'ela_raw', 'ela_scaled', 'ela_perf_level',
-            'math_raw', 'math_scaled',  'math_perf_level']]
+cleaned = ['district_id', 'district', 'school_id', 'school', 'year', 'grade', 'ela_raw', 'ela_scaled', 'ela_perf_level',
+            'math_raw', 'math_scaled',  'math_perf_level']
 
 with open('cleaned.csv','r') as dirtyfile:
     with open('cleaned_ids.csv', 'w') as cleanfile:
