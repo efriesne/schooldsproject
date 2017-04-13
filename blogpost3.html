@@ -26,7 +26,7 @@
         <p> 
         </p>
         <div>
-        <h1> Explanation of Visualization</h1>
+        <h1> Explanation of Visualization (above)</h1>
         <p> 
             Run <b>python3 -m http.server 8888 &amp;</b> from the schooldsproject directory to see the visualization. Each point represents a school in Massachusetts. The blue dots are public schools and the orange are charter schools. They're arranged by
             latitude and longitude. To create the scale, we got a rough estimate of the max/min longitudes and latitudes of Massachusetts. Then we created
@@ -48,6 +48,8 @@
                 <li>Furthermore, even within the datasets there are problems. From year to year, school names aren't guaranteed to be the same, which is something we're working on resolving also using jaccard similarities. Moreover, the id system the state uses changed in 2006 (our data span from 2002-2014) and so we had to find a consistent system of ids to use.</li>
                 <li>Last, we're dealing with some missing data issues that result from schools not reporting scores or the data not being available for a given year, even though it is for other years. We're still thinking about how to resolve this and what strategies we can use moving forward to avoid problems around this issue. Moral of the story: education data is hard to work with!</li>
             </ul>
+        <h1>Alternate Image of Visualization</h1>
+        <img src="vis/mass_schools_vis.png" style="width:80%">
         </div>
     </body>
 </html>
