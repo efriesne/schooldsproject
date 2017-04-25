@@ -12,7 +12,7 @@ var height = 500 - margin.top - margin.bottom;
 // Various scales
 var xScale = d3.scaleLinear().domain([-73514, -69988]).range([0, width]),
     yScale = d3.scaleLinear().domain([41244, 42871]).range([height, 0]),
-    colorScale = d3.scaleOrdinal([0,1]);
+    colorScale = d3.scaleOrdinal([0,1,2,3,4,5,6,7,8,9]);
 
 // The x & y axes
 var xAxis = d3.axisBottom(xScale),
@@ -20,7 +20,7 @@ var xAxis = d3.axisBottom(xScale),
 
 
 // Load the data.
-d3.json("../data/basic_chars_cleaned.json", function(data) {
+d3.csv("data/basic_chars_cleaned.csv", function(data) {
 
   data = data.filter(function(d) {
     // we're only using one year for now
