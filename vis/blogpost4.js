@@ -7,12 +7,14 @@
 var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5};
 var width = 960 - margin.right;
 var height = 500 - margin.top - margin.bottom;
-
+var startColor = '#ff0000';
+var endColor = '#00ff00';
 
 // Various scales
 var xScale = d3.scaleLinear().domain([-73514, -69988]).range([0, width]),
     yScale = d3.scaleLinear().domain([41244, 42871]).range([height, 0]),
-    colorScale = d3.scaleOrdinal([0,1,2,3,4,5,6,7,8,9]);
+    colorScale = d3.scaleLinear().domain([0, 10]).range([startColor, endColor]);
+    //colorScale = d3.scaleOrdinal([0,1,2,3,4,5,6,7,8,9]);
 
 // The x & y axes
 var xAxis = d3.axisBottom(xScale),
@@ -63,7 +65,8 @@ d3.csv("../data/final_data/basic_chars_cleaned_ids.csv", function(locations) {
         .attr("class", "dot")
         .call(position)
         .attr("fill", function(d) {
-          return d3.schemeCategory10[colorScale(color(d))];
+         // return d3.schemeCategory10[colorScale(color(d))];
+         return colorScale(color(d));
         })
 
     var zoom = d3.zoom()
@@ -121,7 +124,7 @@ d3.csv("../data/final_data/basic_chars_cleaned_ids.csv", function(locations) {
     }
     function key(d) {
         // Return school's name
-        return d.name + " " + d.success;
+        return d.name;
     }
 
     svg.call(zoom);
