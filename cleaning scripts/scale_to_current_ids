@@ -1,0 +1,31 @@
+import re
+import csv
+import math
+
+cleaned = ['school_id', 'year', 'off_desc','disc_desc','days_missed']
+
+dirty_file = "../data/incidents_cleaned.csv"
+clean_file = "../data/final_data/incidents.csv"
+all_file = "../data/final_data/current_id_set.csv"
+with open(all_file,'r') as checkerfile:
+    csv_reader = csv.DictReader(checkerfile)
+    all_schools = {}
+    for row in csv_reader:
+        all_schools[row['id']] = row['name']
+
+    with open(dirty_file,'r') as dirtyfile:
+        with open(clean_file, 'w') as cleanfile:
+            csv_reader = csv.DictReader(dirtyfile)
+            writer = csv.writer(cleanfile)
+            writer.writerow(cleaned)
+            for row in csv_reader:
+                #print(row)
+                if row['school_id'] == '': 
+
+                    continue
+                #print(row['school_id'])
+                school_id = str(int(row['school_id']))
+                #print(school_id)
+                if school_id in all_schools:
+                    #print(school_id)    
+    	            writer.writerow([school_id, row[cleaned[1]], row[cleaned[2]], row[cleaned[3]], row[cleaned[4]]])
