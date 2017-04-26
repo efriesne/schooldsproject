@@ -89,7 +89,20 @@
             <br>
             We wanted to test if any of our characteristics could be used on their own to predict school success. What we found was that some, such as race and gender information, as well as selected population (low-income student info) were much more successful than others. For example, the number of incidents per student at a school told us almost nothing -- our algorithm mostly just blindly guessed the success metric each time.
         </p>
-        
+        <p> Out of the first five characteristics we tested , it seems that the following are the best predictors for school test scores:
+        </p>
+            <ol> Selected Population (0.35)
+            <ol> Race and Gender Breakdown (0.32)
+            <ol> School Size (0.13)
+            <ol> School Teacher Data (0.1)
+            <ol> Number of incidents per student (0.06)
+
+        <p> Even with our highest predictors, the classifier score hovered around ~0.34. This is markedly better than blind prediction, which would have scored a 0, but was not the accuracy we were looking for. To get our accuracy up, we sought to combine all of these metrics to give us a more accurate predictor.
+        <br> This is a rudimentary start, but just by combining ten features we increased our accuracy to 0.58! This was a vast improvement -- we hope we can take it further by the final project by adding and tuning even more features.
+        <br> CUMULATIVE CLASSIFIER:
+        <br> mean and std dev for cross validation scores: 0.567597169461 0.0764403272182
+        <br> classifier score:  0.57999711756
+                </p>        
             
     </div>
     </section>
