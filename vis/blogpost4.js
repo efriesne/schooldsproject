@@ -26,6 +26,11 @@ var xScale = d3.scaleLinear().domain([-73514, -69988]).range([0, width]),
 var xAxis = d3.axisBottom(xScale),
     yAxis = d3.axisLeft(yScale);
 
+var level = d3.select("#level span"),
+    town = d3.select("#town span"),
+    charter_stat = d3.select("#charter_stat span")
+    school_name = d3.select("#school_name span");
+
 
 // Load the data.
 d3.csv("../data/final_data/basic_chars_cleaned_ids.csv", function(locations) {
@@ -100,7 +105,6 @@ d3.csv("../data/final_data/basic_chars_cleaned_ids.csv", function(locations) {
 
     d3.select("#success")
         .on("click", function(d,i) {
-            console.log("success")
             dot.data(data)
               .attr("fill", function(d) {
                 return colorScale(color(d));
@@ -108,7 +112,6 @@ d3.csv("../data/final_data/basic_chars_cleaned_ids.csv", function(locations) {
         })
     d3.select("#charter")
         .on("click", function(d,i) {
-            console.log("charter")
             dot.data(data)
               .attr("fill", function(d) {
                 return d3.schemeCategory10[colorScale2(d.charter)];
@@ -116,7 +119,6 @@ d3.csv("../data/final_data/basic_chars_cleaned_ids.csv", function(locations) {
         })
     d3.select("#math")
         .on("click", function(d,i) {
-            console.log("math")
             dot.data(data)
               .attr("fill", function(d) {
                 return colorScale(d.math_success);
@@ -124,9 +126,7 @@ d3.csv("../data/final_data/basic_chars_cleaned_ids.csv", function(locations) {
         })
     d3.select("#english")
         .on("click", function(d,i) {
-            console.log("english")
-            dot.data(data)
-              .attr("fill", function(d) {
+            dot.attr("fill", function(d) {
                 return colorScale(d.ela_success);
               })
         })
@@ -138,6 +138,13 @@ d3.csv("../data/final_data/basic_chars_cleaned_ids.csv", function(locations) {
       .text(function(d) {
         return d.name;
       })
+
+    dot.on("mouseover", function(d) {
+      level.text(d.level)
+      town.text(d.town)
+      charter_stat.text(d.charter)
+      school_name.text(d.name)
+    })
 
     function zoomed() {
       svg.attr("transform", d3.event.transform);
@@ -169,7 +176,7 @@ d3.csv("../data/final_data/basic_chars_cleaned_ids.csv", function(locations) {
     svg.call(zoom);
 
     function position(dot) {
-      dot .attr("cx", function(d) {
+      dot.attr("cx", function(d) {
         return xScale(x(d)); })
           .attr("cy", function(d) { return yScale(y(d)); })
           .attr("r", function(d) { return radius(d); });
