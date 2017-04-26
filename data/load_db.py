@@ -138,7 +138,9 @@ with open('final_data/basic_chars.csv','r') as csvfile:
     
     reader = csv.DictReader(csvfile)
     for row in reader:
-        charter = 0 if row['charter'] is 'No' else 1
+        if row['charter'] == 'No':
+            charter = 0
+        else: charter = 1
         c.execute('''
         INSERT INTO basic
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)''', (row['school_id'], int(row['year']), row['school'], charter, row['level'], row['town'], float(row['lat']), float(row['long'])))
