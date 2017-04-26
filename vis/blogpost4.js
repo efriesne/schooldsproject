@@ -2,6 +2,12 @@
 // Some code copied from d3 project//
 /////////////////////////////////////
 
+// zooming courtesy of:
+// https://bl.ocks.org/mbostock/db6b4335bf1662b413e7968910104f0f
+
+// csv inner join courtesy of:
+// http://stackoverflow.com/questions/17500312/is-there-some-way-i-can-join-the-contents-of-two-javascript-arrays-much-like-i/17500836#17500836
+
 
 // Chart dimensions
 var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5};
@@ -14,7 +20,7 @@ var endColor = '#00ff00';
 var xScale = d3.scaleLinear().domain([-73514, -69988]).range([0, width]),
     yScale = d3.scaleLinear().domain([41244, 42871]).range([height, 0]),
     colorScale = d3.scaleLinear().domain([0, 10]).range([startColor, endColor]);
-    //colorScale = d3.scaleOrdinal([0,1,2,3,4,5,6,7,8,9]);
+    colorScale2 = d3.scaleOrdinal([0,1]);
 
 // The x & y axes
 var xAxis = d3.axisBottom(xScale),
@@ -54,7 +60,7 @@ d3.csv("../data/final_data/basic_chars_cleaned_ids.csv", function(locations) {
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      .attr("transform", "translate(" + margin.left + "," + 0 + ")");
         
     var dot = svg.append("g")
         .attr("class", "dots")
@@ -91,6 +97,39 @@ d3.csv("../data/final_data/basic_chars_cleaned_ids.csv", function(locations) {
       .attr("class", "axis axis--y")
       .call(yAxis)
       .attr("visibility", "hidden");
+
+    d3.select("#success")
+        .on("click", function(d,i) {
+            console.log("success")
+            dot.data(data)
+              .attr("fill", function(d) {
+                return colorScale(color(d));
+              })
+        })
+    d3.select("#charter")
+        .on("click", function(d,i) {
+            console.log("charter")
+            dot.data(data)
+              .attr("fill", function(d) {
+                return d3.schemeCategory10[colorScale2(d.charter)];
+              })
+        })
+    d3.select("#math")
+        .on("click", function(d,i) {
+            console.log("math")
+            dot.data(data)
+              .attr("fill", function(d) {
+                return colorScale(d.math_success);
+              })
+        })
+    d3.select("#english")
+        .on("click", function(d,i) {
+            console.log("english")
+            dot.data(data)
+              .attr("fill", function(d) {
+                return colorScale(d.ela_success);
+              })
+        })
 
     // Add a title.
 
