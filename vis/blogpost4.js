@@ -2,21 +2,34 @@
 // Some code copied from d3 project//
 /////////////////////////////////////
 
+// zooming courtesy of:
+// https://bl.ocks.org/mbostock/db6b4335bf1662b413e7968910104f0f
+
+// csv inner join courtesy of:
+// http://stackoverflow.com/questions/17500312/is-there-some-way-i-can-join-the-contents-of-two-javascript-arrays-much-like-i/17500836#17500836
+
 
 // Chart dimensions
 var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5};
 var width = 960 - margin.right;
 var height = 500 - margin.top - margin.bottom;
-
+var startColor = '#ff0000';
+var endColor = '#00ff00';
 
 // Various scales
 var xScale = d3.scaleLinear().domain([-73514, -69988]).range([0, width]),
     yScale = d3.scaleLinear().domain([41244, 42871]).range([height, 0]),
-    colorScale = d3.scaleOrdinal([0,1,2,3,4,5,6,7,8,9]);
+    colorScale = d3.scaleLinear().domain([0, 10]).range([startColor, endColor]);
+    colorScale2 = d3.scaleOrdinal([0,1]);
 
 // The x & y axes
 var xAxis = d3.axisBottom(xScale),
     yAxis = d3.axisLeft(yScale);
+
+var level = d3.select("#level span"),
+    town = d3.select("#town span"),
+    charter_stat = d3.select("#charter_stat span")
+    school_name = d3.select("#school_name span");
 
 
 // Load the data.
@@ -52,7 +65,7 @@ d3.csv("../data/final_data/basic_chars_cleaned_ids.csv", function(locations) {
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      .attr("transform", "translate(" + margin.left + "," + 0 + ")");
         
     var dot = svg.append("g")
         .attr("class", "dots")
@@ -63,7 +76,8 @@ d3.csv("../data/final_data/basic_chars_cleaned_ids.csv", function(locations) {
         .attr("class", "dot")
         .call(position)
         .attr("fill", function(d) {
-          return d3.schemeCategory10[colorScale(color(d))];
+         // return d3.schemeCategory10[colorScale(color(d))];
+         return colorScale(color(d));
         })
 
     var zoom = d3.zoom()
@@ -89,6 +103,34 @@ d3.csv("../data/final_data/basic_chars_cleaned_ids.csv", function(locations) {
       .call(yAxis)
       .attr("visibility", "hidden");
 
+    d3.select("#success")
+        .on("click", function(d,i) {
+            dot.data(data)
+              .attr("fill", function(d) {
+                return colorScale(color(d));
+              })
+        })
+    d3.select("#charter")
+        .on("click", function(d,i) {
+            dot.data(data)
+              .attr("fill", function(d) {
+                return d3.schemeCategory10[colorScale2(d.charter)];
+              })
+        })
+    d3.select("#math")
+        .on("click", function(d,i) {
+            dot.data(data)
+              .attr("fill", function(d) {
+                return colorScale(d.math_success);
+              })
+        })
+    d3.select("#english")
+        .on("click", function(d,i) {
+            dot.attr("fill", function(d) {
+                return colorScale(d.ela_success);
+              })
+        })
+
     // Add a title.
 
 
@@ -96,6 +138,13 @@ d3.csv("../data/final_data/basic_chars_cleaned_ids.csv", function(locations) {
       .text(function(d) {
         return d.name;
       })
+
+    dot.on("mouseover", function(d) {
+      level.text(d.level)
+      town.text(d.town)
+      charter_stat.text(d.charter)
+      school_name.text(d.name)
+    })
 
     function zoomed() {
       svg.attr("transform", d3.event.transform);
@@ -121,13 +170,13 @@ d3.csv("../data/final_data/basic_chars_cleaned_ids.csv", function(locations) {
     }
     function key(d) {
         // Return school's name
-        return d.name + " " + d.success;
+        return d.name;
     }
 
     svg.call(zoom);
 
     function position(dot) {
-      dot .attr("cx", function(d) {
+      dot.attr("cx", function(d) {
         return xScale(x(d)); })
           .attr("cy", function(d) { return yScale(y(d)); })
           .attr("r", function(d) { return radius(d); });
