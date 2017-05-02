@@ -12,17 +12,16 @@ c.execute('''
         CREATE TABLE neighbors(
             school_id int not null,
             year int,
-            n1, int,
-            n2, int,
-            n3, int, 
-            n4, int, 
-            n5, int,
-            n6, int, 
-            n7, int,
-            n8, int,
-            n9, int,
-            n10, int)
-                    ''')
+            n1 int,
+            n2 int,
+            n3 int, 
+            n4 int, 
+            n5 int,
+            n6 int, 
+            n7 int,
+            n8 int,
+            n9 int,
+            n10 int)''')
 
 conn.commit()
 
@@ -34,9 +33,9 @@ with open('../ml/neighbors.csv','r') as csvfile:
     for row in reader:
         c.execute('''
 		INSERT INTO neighbors
-	        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', (int(row[0]), int(row[1]), int(row[2], 
-                    int(row[3]), int(row[4]), int(row[5]), int(row[6]), int(row[7]), int(row[8]),
-                    int(row[9]), int(row[10]), int(row[11]))))
+	        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', (row[0], int(float(row[1])), row[2], 
+                    row[3], row[4], row[5], row[6], row[7], row[8],
+                    row[9], row[10], row[11]))
 
 
 conn.commit()
