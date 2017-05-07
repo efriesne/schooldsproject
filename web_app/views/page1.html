@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <title>Map with Nearest Neighbors</title>
+        <style type="text/css">
+                    .main-content {
+                      margin-top: 100px;
+                    }
+
+                    #map_wrapper {
+                      float: left;
+                      margin-left: 0px;
+                      border-style: solid;
+                    }
+
+                    #chart {
+                        margin-left: 40px;
+                        height: 506px;
+                    }
+
+                    text {
+                        font: 10px sans-serif;
+                    }
+
+                    .dot {
+                        stroke: #000;
+                    }
+
+                    .view {
+                      fill: "none";
+                      stroke: "none";
+                    }
+
+                    #buttons {
+                        border: none;
+                        color: white;
+                        text-align: center;
+                        text-decoration: none;
+                        font-size: 10px;
+                        cursor: pointer;
+                    }
+                    #info {
+                        margin-left: 100px;
+                        font-size: 20px;
+                        text-decoration: none;
+                    }
+                    #graph_wrapper{
+                        float: right;
+                        justify-content: center;
+                        width: 40%;
+                        border-style: solid;
+                        height: 500px;
+                    }
+
+                    #neighbors_title {
+                        margin-left: 20%
+                    }
+
+        </style>
+
+    </head>
+    <body>
+      <section class="main-content">
+        <div id="map_wrapper">
+          <p id="chart">
+              <div id="info">
+                  <div id = "school_name"><span></span></div>
+                  <div id = "level"><b>Level: </b><span></span> </div>
+                  <div id = "town"><b>Town: </b><span></span> </div>
+                  <div id = "charter_stat"><b>Charter Status: </b><span></span></div> <br>
+              </div>
+              <div id="buttons">
+                      <button id="success">Success (default)</button>
+                      <button id="charter">Charter Status</button>
+                      <button id="math">Math Success</button>
+                      <button id="english">English Success</button>
+              </div>
+          </p>
+        </div>
+          <br>
+        <div id="graph_wrapper">
+          <h3 id="neighbors_title">Nearest Neighbors Success Comparison</h3>
+          <br>
+          <br>
+          <svg class="graph"></svg>
+        </div>
+        <script type="text/javascript" src="../js/page1.js"></script>
+      </section>
+    </body>
+</html>
