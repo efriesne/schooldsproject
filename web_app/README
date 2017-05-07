@@ -1,1 +1,3 @@
-Hello!
+Welcome to our Final Data Science Web App.
+
+To view, run node server.js from the web_app directory and visit localhost:8080. 
