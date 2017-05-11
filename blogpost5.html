@@ -24,17 +24,15 @@
     </section>
     
     <section class="main-content">
-        <a href="index.html">Return to Home Page</a></br>
+        <a href="index.html">Return to Home Page</a><br>
        
-        <p> 
-        </p>
         <div>
         <h2> Summary </h2>
         <p> 
             Over the course of the semester, we wanted to examine what characteristics affect the way that students 
             test in public schools in Massachussets. As before (in Blog Post II), we used a success metric based on 
             student-level test data for each school. We defined the success metric as follows:
-            
+         </p> 
                 <center> (sum of english score by each student that year) &frasl; (number of students who took the english test ) <br> + <br>(sum of math score by each student that year) &frasl;
      (Number of students who took the maths test)</center>
                 <center> <i> All * 1.67 to scale it up to a max score of 10 </i> </center> <br>
@@ -47,15 +45,41 @@
               <li>How similarly do schools with alike characteristics perform?</li>
             </ol> 
             We sought about answering these in three different ways: <strong>Map Visualization, K-Nearest Neighbor, and Machine Learning.</strong>
-        </p>
+        </div>
+        <div>
         <h2> Map Visualization </h2>
+        <p>
             Since our third and fourth blog post, we have improved our map visualization such that the final version allows the user to observe
             changes in success over time (2002-2014). Additionally, we have scaled the bubble sizes to the size of the schools. We removed english success because there was no data before 2006.
             From this map we were able to observe that success clearly increases over time as there is a dramatic increase in the number of green
             schools (representing better performing schools) over time. Additionally, we were able to gain insights related to the question
             of how location impact success because we can see there are some clusters of schools that are underporming such as in
             Springfield (circled in yellow above), Boston,  Fall River and New Bedford.
+        </p>
         <img src="vis/mass_schools_vis_finalpost.png" style="width:80%">
+        </div>
+        <div>
+        <h3> K-Nearest Neighbor </h3>
+        <p>
+            K-Nearest Neighbor is our most recent addition to our analysis, which address how schools with alike characterstics perform. 
+            We wrote an algorithm that computed each school’s 10 “nearest neighbors” for any given year based on schools’ observable characteristics.
+            For a given year, we obtained a matrix of school characteristics, where each row was a school and each column was a feature. 
+            We used sklearn’s MinMax normalization with feature_range=(0,1) on each of the features in the array so that no one feature would 
+            be weighted more heavily than any of the others in our neighbors calculation. Then, for each school, we calculated the difference
+            between that school’s normalized characteristics and every other school, and returned the first 10 schools an a list of schools
+            sorted by their difference values.In the web app, a user can click on a specific school, as shown below, which will highlight the 10 schools most similar to the click
+            school and display the success for each school along with a breakdown of socioeconomic and gender/race characteristics for each school
+            when the user clicks on a bar in the success chart.
+       </p>
+       <img src="vis/neighbors.png" style="width:80%">
+            <p>
+                From this visualization we were able to observe that for some schools, the 10 most similar
+                schools will perform similarly, as is shown in the image, while for other schools, 
+                the success varies among similar schools. Additionally, the map visualization feature allows 
+                us to observe whether or not schools that are similar are geographically close to each other.
+                Similar to success, this is sometimes true and sometimes not. 
+            </p>
+        
         </div>
     </section>
     </body>
