@@ -56,7 +56,9 @@
             of how location impact success because we can see there are some clusters of schools that are underporming such as in
             Springfield (circled in yellow above), Boston,  Fall River and New Bedford.
         </p>
+            <br>
         <img src="vis/mass_schools_vis_finalpost.png" style="width:80%">
+            <br>
         </div>
         <div>
         <h3> K-Nearest Neighbor </h3>
@@ -79,6 +81,33 @@
                 us to observe whether or not schools that are similar are geographically close to each other.
                 Similar to success, this is sometimes true and sometimes not. 
             </p>
+        
+        </div>
+        <div>
+        <h3> Machine Learning Classifier </h3>
+        <p>
+            Over the semester, we have substantially improved our classifier accuracy, which predicts school success based 
+            on a number of school characteristics. The structure of our classifier
+            is illustrated in the diagram below. 
+         </p> 
+            <br>
+             <img src="vis/classifier_structure.png" style="width:80%">
+            <br>
+           <p>
+           At the beginning of the semester, the classifier achieved 34% accuracy and now it reaches 84.5% accuracy.
+            Since our last blog post, we added district id as a feature, which significantly improved accuracy.  Overall, we 
+               determined that school success is most directly correlated to district. Moreover, the fact that “Selected Population” 
+               and “Race and Gender” have such a high impact on how students test means that socio-economic circumstances affect 
+               a school’s success the most.One of our most surprising findings was that teacher data actually had a negative 
+               impact on the classifier: neither the student-teacher ratio nor the percentage of highly qualified teachers 
+               could be directly linked to increased school performance.
+       </p>
+            <br>
+            <img src="vis/classifier_features.png" style="width:80%">
+            <img src="vis/classifier_accuracy.png" style="width:80%">
+      
+           
+
         
         </div>
     </section>
