@@ -45,6 +45,7 @@
               <li>How similarly do schools with alike characteristics perform?</li>
             </ol> 
             We sought about answering these in three different ways: <strong>Map Visualization, K-Nearest Neighbor, and Machine Learning.</strong>
+            We created a Node.js web app with visualizations for each of these three areas.
         </div>
         <div>
         <h2> Map Visualization </h2>
@@ -69,7 +70,7 @@
             We used sklearn’s MinMax normalization with feature_range=(0,1) on each of the features in the array so that no one feature would 
             be weighted more heavily than any of the others in our neighbors calculation. Then, for each school, we calculated the difference
             between that school’s normalized characteristics and every other school, and returned the first 10 schools an a list of schools
-            sorted by their difference values.In the web app, a user can click on a specific school, as shown below, which will highlight the 10 schools most similar to the click
+            sorted by their difference values. In the web app, a user can click on a specific school, as shown below, which will highlight the 10 schools most similar to the click
             school and display the success for each school along with a breakdown of socioeconomic and gender/race characteristics for each school
             when the user clicks on a bar in the success chart.
        </p>
@@ -107,7 +108,7 @@
             <img src="vis/classifier_accuracy.png" style="width:80%">
       
            <p>
-                Our third visualization allows a user to create a school with certain characteristics and observe the predicted
+                The third visualization in our web app allows a user to create a school with certain characteristics and observe the predicted
                success produced by our classifier. We honed in on a few specific characteristics: school type, school level, incidents, 
                race and gender, selected population, teacher data, and enrollment, which were chosen because they have a variety of impact on 
                success. Selected population, race and gender characteristics, and year have the greatest impact on success, while other 
